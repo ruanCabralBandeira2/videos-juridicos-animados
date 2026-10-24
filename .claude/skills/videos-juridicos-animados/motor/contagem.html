@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contagem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;600;800&display=block" rel="stylesheet" onerror="this.remove()">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+<style>
+@font-face { font-family: 'Garamond Local'; src: url('fonts/EBGaramond.ttf'); font-style: normal; font-weight: 400 800; }
+@font-face { font-family: 'Garamond Local'; src: url('fonts/EBGaramond-Italic.ttf'); font-style: italic; font-weight: 400 800; }
+:root { --u: 7.2px; --serif: 'EB Garamond', 'Garamond Local', Georgia, 'DejaVu Serif', serif; --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --acento: #ff6b3d; --ouro: #f2c66d; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #000; overflow: hidden; }
+#palco { position: relative; overflow: hidden; background: #000; }
+#palco > * { position: absolute; inset: 0; }
+canvas#gl { width: 100%; height: 100%; display: block; }
+#vinheta { pointer-events: none; background: radial-gradient(ellipse at 50% 55%, transparent 35%, rgba(60,12,0,.85) 100%); opacity: 0; }
+#flash { background: #fff; opacity: 0; }
+.txt { color: #fff; text-align: center; font-family: var(--serif); text-shadow: 0 0 calc(var(--u)*3) rgba(0,0,0,.6), 0 0 calc(var(--u)*1) rgba(0,0,0,.45), 0 calc(var(--u)*.2) calc(var(--u)*.5) rgba(0,0,0,.55); }
+.sans .txt, .sans #legenda, .sans #gancho .t { font-family: var(--sans); font-weight: 800; font-style: normal; letter-spacing: -.01em; }
+#gancho { top: 9%; bottom: auto; padding: 0 9%; }
+#gancho .pre { font-style: italic; font-size: calc(var(--u)*4.6); opacity: .9; }
+#gancho .t { font-size: calc(var(--u)*7.4); line-height: 1.05; font-weight: 500; }
+#hud { top: 7.2%; bottom: auto; }
+#hud .rot { font-family: var(--sans); font-weight: 600; font-size: calc(var(--u)*1.75); letter-spacing: .32em; text-indent: .32em; opacity: .92; }
+#hud .num { font-size: calc(var(--u)*11.5); line-height: 1.02; font-weight: 500; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+#hud .num .uni { font-size: .38em; margin-left: .12em; opacity: .9; }
+#hud .sub { font-family: var(--sans); font-weight: 600; font-size: calc(var(--u)*1.6); letter-spacing: .26em; text-indent: .26em; color: var(--acento); margin-top: calc(var(--u)*.6); }
+#hud .sub2 { font-family: var(--sans); font-weight: 600; font-size: calc(var(--u)*1.6); letter-spacing: .2em; margin-top: calc(var(--u)*1.2); opacity: .85; font-variant-numeric: tabular-nums; }
+.sans #hud .num { font-weight: 800; }
+#legenda { top: 62%; bottom: auto; padding: 0 10%; font-style: italic; font-size: calc(var(--u)*4.9); line-height: 1.12; }
+.sans #legenda { font-size: calc(var(--u)*4.4); }
+#legenda .real { color: var(--ouro); font-style: normal; }
+#carimbos { pointer-events: none; }
+.carimbo { position: absolute; font-family: var(--sans); font-weight: 800; color: #d7262b; border: calc(var(--u)*.7) solid #d7262b; border-radius: calc(var(--u)*1.1);
+  padding: calc(var(--u)*.6) calc(var(--u)*1.8); font-size: calc(var(--u)*5); letter-spacing: .04em; white-space: nowrap; mix-blend-mode: multiply;
+  background: rgba(255,240,235,.18); transform-origin: center; opacity: 0; }
+#climax { opacity: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#climax .sobre { font-family: var(--sans); font-weight: 600; letter-spacing: .32em; text-indent: .32em; font-size: calc(var(--u)*1.9); color: #2a1a12; position: relative; z-index: 2; margin-bottom: calc(var(--u)*.6); }
+#climax .palavra { font-family: var(--serif); color: var(--acento); font-size: calc(var(--u)*16); line-height: 1; position: relative; z-index: 2; white-space: nowrap; }
+.sans #climax .palavra { font-family: var(--sans); font-weight: 800; }
+#climax svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+#preto { background: #0b0b0b; opacity: 0; }
+#cartela { background: #0b0b0b; opacity: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 11%; gap: calc(var(--u)*5); }
+#cartela > * { opacity: 0; text-align: center; color: #fff; font-family: var(--serif); }
+#cartela .tit { font-size: calc(var(--u)*4.2); }
+#cartela .div { width: calc(var(--u)*9); height: 1px; background: rgba(255,255,255,.35); }
+#cartela .calma { font-style: italic; font-size: calc(var(--u)*4.1); line-height: 1.22; }
+#cartela .perg { color: var(--ouro); font-size: calc(var(--u)*4.1); line-height: 1.22; }
+#cartela .fonte { font-family: var(--sans); font-size: calc(var(--u)*1.55); line-height: 1.5; color: rgba(255,255,255,.42); margin-top: calc(var(--u)*6); }
+#cartela .assin { font-family: var(--sans); font-size: calc(var(--u)*1.7); letter-spacing: .25em; color: rgba(255,255,255,.5); }
+.sans #cartela > * { font-family: var(--sans); }
+.sans #cartela .tit { font-weight: 800; }
+</style>
+</head>
+<body>
+<div id="palco">
+  <canvas id="gl"></canvas>
+  <div id="vinheta"></div>
+  <div id="carimbos"></div>
+  <div id="flash"></div>
+  <div id="hud" class="txt"><div class="rot"></div><div class="num"></div><div class="sub"></div><div class="sub2"></div></div>
+  <div id="legenda" class="txt"></div>
+  <div id="gancho" class="txt"><div class="pre"></div><div class="t"></div></div>
+  <div id="climax"><svg></svg><div class="sobre"></div><div class="palavra"></div></div>
+  <div id="preto"></div>
+  <div id="cartela"><div class="tit"></div><div class="div"></div><div class="calma"></div><div class="perg"></div><div class="fonte"></div><div class="assin"></div></div>
+</div>
+<script type="module" src="./contagem.js"></script>
+</body>
+</html>

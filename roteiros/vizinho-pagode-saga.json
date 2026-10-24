@@ -1,0 +1,143 @@
+{
+  "formato": "saga",
+  "semente": 4,
+  "voz": { "provedor": "", "voz": "", "velocidade": 1.08 },
+  "planos": [
+    {
+      "fala": "Se o seu vizinho liga o *pagode* toda noite, não desça pra brigar.",
+      "fundo": "cidade-noite",
+      "elementos": [
+        { "tipo": "predio", "x": 540, "y": 1500, "w": 420, "h": 1050, "cor": "#3a3f49", "corJanela": "#262b33", "acesas": 0.15 },
+        { "tipo": "etiqueta", "x": 540, "y": 330, "texto": "SEXTA · 23:40", "cor": "verm", "entra": 0.3 },
+        { "tipo": "caixaSom", "x": 700, "y": 1000, "escala": 0.45, "entra": "@pagode" }
+      ]
+    },
+    {
+      "fala": "Você acorda às seis. Ele, pelo visto, *nunca dorme*.",
+      "fundo": "interior-noite",
+      "elementos": [
+        { "tipo": "janela", "x": 540, "y": 640, "noite": true },
+        { "tipo": "personagem", "x": 540, "y": 1440, "expressao": "preocupado", "roupa": "#5b7fa6", "calca": "#2c3b55", "cabelo": "espetado" },
+        { "tipo": "ficha", "x": 540, "y": 330, "topo": "3º ANDAR", "nome": "VOCÊ", "sub": "ACORDA ÀS 6H", "cor": "azul", "entra": 0.2 }
+      ]
+    },
+    {
+      "fala": "Esse é o Valdir. Cinquenta e quatro anos e uma caixa de som de *oitocentos watts*.",
+      "fundo": "interior",
+      "zoom": [1.0, 1.08],
+      "elementos": [
+        { "tipo": "personagem", "x": 420, "y": 1440, "expressao": "feliz", "pose": "acena", "roupa": "verm", "calca": "#3d3d3d", "cabelo": "careca", "corCabelo": "#6b5442", "acessorios": ["bigode"] },
+        { "tipo": "caixaSom", "x": 800, "y": 1440, "escala": 1.0, "entra": "@caixa" },
+        { "tipo": "ficha", "x": 540, "y": 330, "topo": "4º ANDAR · BEM EM CIMA", "nome": "VALDIR", "sub": "54 ANOS", "cor": "verm", "entra": "@Valdir" }
+      ]
+    },
+    {
+      "fala": "E não adianta gritar lei do silêncio. Ela não funciona do jeito que você pensa.",
+      "fundo": "escuro",
+      "elementos": [
+        { "tipo": "titulo", "x": 540, "y": 760, "texto": "“LEI DO SILÊNCIO”", "cor": "#f4efe4", "tam": 110, "entra": "@lei" },
+        { "tipo": "xis", "x": 540, "y": 720, "tam": 300, "entra": "@não" }
+      ]
+    },
+    {
+      "fala": "Barulho que tira o seu _sossego_ é proibido a *qualquer hora*. Não só depois das dez.",
+      "fundo": "claro",
+      "elementos": [
+        { "tipo": "documento", "x": 540, "y": 780, "titulo": "CÓDIGO CIVIL", "linhas": 10, "rot": -3, "anim": "cai" },
+        { "tipo": "etiqueta", "x": 660, "y": 1010, "texto": "ART. 1.277", "cor": "amar", "rot": 4, "entra": "@sossego" },
+        { "tipo": "etiqueta", "x": 540, "y": 330, "texto": "VALE 24 HORAS", "cor": "verde", "entra": "@qualquer" }
+      ]
+    },
+    {
+      "fala": "Então você faz tudo certo. Primeiro, conversa.",
+      "fundo": "quadro",
+      "elementos": [
+        { "tipo": "inventario", "x": 540, "y": 790, "titulo": "O PLANO", "itens": [
+          { "nome": "CONVERSA", "valor": 5, "cor": "verde" },
+          { "nome": "OCORRÊNCIA", "valor": 0, "cor": "azul" },
+          { "nome": "SÍNDICA", "valor": 0, "cor": "amar" },
+          { "nome": "PACIÊNCIA", "valor": 2, "cor": "verm" }
+        ] }
+      ]
+    },
+    {
+      "fala": "O Valdir promete abaixar. E abaixa. Por *quarenta minutos*.",
+      "fundo": "interior",
+      "elementos": [
+        { "tipo": "porta", "x": 760, "y": 1440, "luz": false },
+        { "tipo": "personagem", "x": 330, "y": 1440, "expressao": "neutro", "roupa": "#5b7fa6", "calca": "#2c3b55", "cabelo": "espetado" },
+        { "tipo": "personagem", "x": 760, "y": 1440, "expressao": "feliz", "pose": "acena", "roupa": "verm", "calca": "#3d3d3d", "cabelo": "careca", "corCabelo": "#6b5442", "acessorios": ["bigode"], "espelhar": true },
+        { "tipo": "balao", "x": 840, "y": 760, "texto": "TÁ ALTO?\nNEM TÁ!", "entra": 0.1 },
+        { "tipo": "cronometro", "x": 540, "y": 330, "de": 2400, "ate": 0, "formato": "mmss", "rotulo": "ATÉ O PAGODE VOLTAR", "entra": "@quarenta", "dur": 2.2, "curva": "suave" }
+      ]
+    },
+    {
+      "fala": "Aí você registra no _livro de ocorrências_. Data, hora e repertório.",
+      "fundo": "escritorio",
+      "elementos": [
+        { "tipo": "documento", "x": 540, "y": 800, "titulo": "OCORRÊNCIAS", "linhas": 8, "assinatura": true, "anim": "cai" },
+        { "tipo": "etiqueta", "x": 540, "y": 330, "texto": "PROVA ESCRITA", "cor": "verde", "entra": "@livro" },
+        { "tipo": "etiqueta", "x": 700, "y": 1110, "texto": "23:40 · PAGODE", "cor": "verm", "tam": 26, "rot": -5, "entra": "@repertório" }
+      ]
+    },
+    {
+      "fala": "A síndica, Dona Cida, manda uma notificação. E ela leva isso *muito* a sério.",
+      "fundo": "interior",
+      "elementos": [
+        { "tipo": "personagem", "x": 540, "y": 1440, "expressao": "desconfiado", "pose": "cruza", "roupa": "#7a4f8a", "calca": "#4a3d55", "cabelo": "coque", "corCabelo": "#c9c4bc", "pele": "#f0c9a0", "acessorios": ["oculos"] },
+        { "tipo": "ficha", "x": 540, "y": 330, "topo": "SÍNDICA HÁ 19 ANOS", "nome": "DONA CIDA", "sub": "71 ANOS", "cor": "#7a4f8a", "entra": "@Dona" }
+      ]
+    },
+    {
+      "fala": "Se repetir, vem a *multa* do regulamento. E se virar rotina...",
+      "fundo": "escuro",
+      "elementos": [
+        { "tipo": "contador", "x": 540, "y": 560, "w": 420, "icone": "⚖️", "rotulo": "MULTAS DO VALDIR", "de": 0, "ate": 3, "formato": "numero", "entra": "@multa", "curva": "degraus", "degraus": 4 },
+        { "tipo": "carimbo", "x": 540, "y": 900, "texto": "NOTIFICADO", "rot": -8, "entra": 0.2 }
+      ]
+    },
+    {
+      "fala": "a lei chama de condômino *antissocial*. E a multa pode chegar a _dez vezes_ o condomínio.",
+      "fundo": "quadro",
+      "elementos": [
+        { "tipo": "inventario", "x": 540, "y": 860, "titulo": "VALDIR", "itens": [
+          { "nome": "MULTAS", "valor": 4, "cor": "verm" },
+          { "nome": "VIZINHOS CONTRA", "valor": 5, "cor": "verm" },
+          { "nome": "CAIXA DE SOM", "valor": 5, "cor": "verde" }
+        ], "selo": { "topo": "STATUS", "texto": "ANTISSOCIAL", "cor": "verm" } },
+        { "tipo": "etiqueta", "x": 540, "y": 1340, "texto": "CC, ART. 1.337", "cor": "amar", "entra": "@dez" }
+      ]
+    },
+    {
+      "fala": "Na sexta seguinte, o prédio inteiro dormiu.",
+      "fundo": "cidade-noite",
+      "elementos": [
+        { "tipo": "predio", "x": 540, "y": 1500, "w": 420, "h": 1050, "cor": "#3a3f49", "corJanela": "#262b33", "acesas": 0 },
+        { "tipo": "etiqueta", "x": 540, "y": 330, "texto": "SILÊNCIO TOTAL", "cor": "verde", "entra": "@dormiu" }
+      ]
+    },
+    {
+      "fala": "Só tinha um problema.",
+      "fundo": "escuro",
+      "elementos": [ { "tipo": "titulo", "x": 540, "y": 960, "texto": "UM PROBLEMA.", "cor": "verm", "tam": 130, "entra": "@problema" } ]
+    },
+    {
+      "fala": "O Valdir descobriu *quem* reclamou.",
+      "fundo": "interior-noite",
+      "zoom": [1.0, 1.12],
+      "foco": [540, 1100],
+      "elementos": [
+        { "tipo": "porta", "x": 540, "y": 1440 },
+        { "tipo": "etiqueta", "x": 540, "y": 640, "texto": "TOC TOC TOC", "cor": "verm", "entra": "@quem", "continuo": "treme" }
+      ]
+    }
+  ],
+  "final": {
+    "parte": "PARTE 2",
+    "pergunta": "O que o Valdir vai fazer?",
+    "cta": "Siga para a próxima assembleia",
+    "serie": "PRÉDIO DO VALDIR",
+    "fonte": "CC, arts. 1.277 e 1.337 · LCP, art. 42 · Personagens fictícios. Conteúdo informativo.",
+    "duracao": 4.5
+  }
+}

@@ -1,0 +1,6 @@
+saida/
+node_modules/
+__pycache__/
+*.pyc
+.env
+package-lock.json

@@ -1,0 +1,48 @@
+{
+  "formato": "contagem",
+  "estilo": "serif",
+  "cena": "../cenas/condominio.js",
+  "duracao": 78,
+  "semente": 11,
+  "gancho": { "pre": "E se", "texto": "você parasse de pagar o condomínio?" },
+  "hud1": {
+    "rotulo": "O BOLETO VENCE EM",
+    "de": 30, "ate": 0, "formato": "dias", "curva": "suspense",
+    "sub": "VOCÊ JÁ DECIDIU NÃO PAGAR"
+  },
+  "hud2": {
+    "rotulo": "VOCÊ DEVE",
+    "de": 850, "ate": 48700, "formato": "moeda", "curva": "exponencial",
+    "sub": "E CONTANDO",
+    "contador": { "prefixo": "ATRASO: ", "de": 0, "ate": 36, "formato": "numero", "unidade": " MESES" }
+  },
+  "legendas": [
+    { "t": 5.2, "texto": "No começo, nada acontece." },
+    { "t": 10.5, "texto": "O porteiro ainda te dá bom dia." },
+    { "t": 16, "texto": "O síndico ainda acena." },
+    { "t": 21.5, "texto": "Você começa a achar que deu certo." },
+    { "t": 28, "texto": "Faltam só algumas horas." },
+    { "t": 34.4, "texto": "No dia seguinte: multa de 2%." },
+    { "t": 39, "texto": "Todo mês, mais 1% de juros." },
+    { "t": 43.5, "texto": "E o condomínio nem precisa de processo longo." },
+    { "t": 48.5, "texto": "O boleto já vale como **título executivo**." },
+    { "t": 52.5, "texto": "Você tem 3 dias pra pagar." },
+    { "t": 55.6, "texto": "“Mas é bem de família…”" },
+    { "t": 57.6, "texto": "Não protege de dívida de condomínio." }
+  ],
+  "carimbos": [
+    { "t": 35, "texto": "MULTA 2%" },
+    { "t": 39.6, "texto": "JUROS 1% a.m." },
+    { "t": 44.2, "texto": "EXECUÇÃO" },
+    { "t": 49.4, "texto": "CITAÇÃO" },
+    { "t": 53.4, "texto": "PENHORA" }
+  ],
+  "climax": { "sobre": "SEU APARTAMENTO", "palavra": "VENDIDO" },
+  "cartela": {
+    "calma": "Calma: dá pra resolver antes. Na execução, a lei deixa parcelar: 30% de entrada e o resto em até 6 vezes.",
+    "pergunta": "Você sabia que o condomínio podia levar o seu apartamento?",
+    "fonte": "CC, art. 1.336, §1º · CPC, arts. 784, X, 829 e 916 · Lei 8.009/90, art. 3º, IV\nConteúdo informativo. Cada caso tem particularidades.",
+    "assinatura": "@seuperfil"
+  },
+  "ambiente": "cidade"
+}
